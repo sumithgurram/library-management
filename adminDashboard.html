@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Jost', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, rgba(15, 12, 41, 0.6), rgba(48, 43, 99, 0.6), rgba(36, 36, 62, 0.6)),
+        url('https://www.pixel-studios.com/blog/wp-content/uploads/2018/12/012.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background-color: #573b8a;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background-color: #6d44b8;
+      color: white;
+    }
+
+    .container {
+      margin: 50px;
+      text-align: center;
+    }
+
+    .container h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: #573b8a;
+      color: white;
+      padding: 10px 20px;
+      margin: 10px;
+      text-align: center;
+      display: inline-block;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #6d44b8;
+    }
+
+    .content {
+      margin-top: 20px;
+    }
+
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #fff;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #573b8a;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="#addBooks" onclick="showSection('addBooks')">Add Books</a>
+    <a href="#removeBooks" onclick="showSection('removeBooks')">Remove Books</a>
+    <a href="#returnBooks" onclick="showSection('returnBooks')">Return Books</a>
+    <a href="#newArrivals" onclick="showSection('newArrivals')">New Arrivals</a>
+    <a href="#issueBook" onclick="showSection('issueBook')">Issue Book</a> <!-- New Link -->
+  </div>
+
+  <!-- Content -->
+  <div class="container">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome to the Admin Dashboard.</p>
+
+    <!-- Section: Add Books -->
+    <div id="addBooks" class="content" style="display:none;">
+      <h2>Add Books</h2>
+      <form id="addBookForm">
+        <input type="text" placeholder="Book Title" required><br>
+        <input type="number" placeholder="ISBN" required><br>
+        <input type="text" placeholder="Author" required><br>
+        <input type="number" placeholder="Quantity" required><br>
+        <input type="date" placeholder="Date published" required><br>
+        
+        <button type="submit" class="btn">Add Book</button>
+      </form>
+    </div>
+
+    <!-- Section: Remove Books -->
+    <div id="removeBooks" class="content" style="display:none;">
+      <h2>Remove Books</h2>
+      <form id="removeBookForm">
+        <input type="text" placeholder="Book Title" required><br>
+        <button type="submit" class="btn">Remove Book</button>
+      </form>
+    </div>
+
+    <!-- Section: Return Books -->
+    <div id="returnBooks" class="content" style="display:none;">
+      <h2>Return Books</h2>
+      <form id="returnBookForm">
+        <input type="text" placeholder="Book Title" required><br>
+        <input type="text" placeholder="Borrower Name" required><br>
+        <input type="text" placeholder="E-mail" required><br>
+        <input type="date" placeholder="Date return" required><br>
+        
+        <button type="submit" class="btn">Return Book</button>
+      </form>
+    </div>
+
+    <!-- Section: New Arrivals -->
+    <div id="newArrivals" class="content" style="display:none;">
+      <h2>New Arrivals</h2>
+      <form id="newArrivalsForm">
+        <input type="text" id="newBookTitle" placeholder="Book Name" required><br>
+        <input type="text" id="newAuthor" placeholder="Author" required><br>
+        <input type="text" id="bookshelfNumber" placeholder="Bookshelf Number" required><br>
+        <input type="number" placeholder="ISBN" required><br>
+        <button type="submit" class="btn">Add New Arrival</button>
+      </form>
+      <table id="arrivalsTable">
+        <thead>
+          <tr>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Bookshelf Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- New arrivals will be added here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section: Issue Book -->
+    <div id="issueBook" class="content" style="display:none;">
+      <h2>Issue Book</h2>
+      <form id="issueBookForm">
+        <input type="text" placeholder="Book Title" required><br>
+        <input type="text" placeholder="Borrower Name" required><br>
+        <input type="text" placeholder="Author" required><br>
+        <input type="text" placeholder="Borrower Contact" required><br>
+        <input type="date" placeholder="Issue date" required><br>
+        
+        <button type="submit" class="btn">Issue Book</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Function to show different sections based on the navbar click
+    function showSection(sectionId) {
+      document.querySelectorAll('.content').forEach(function(section) {
+        section.style.display = 'none';  // Hide all sections
+      });
+      document.getElementById(sectionId).style.display = 'block';  // Show selected section
+    }
+
+    // Add Book Form Submission
+    document.getElementById('addBookForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      alert('Book added successfully!'); // Show success message
+    });
+
+    // Remove Book Form Submission
+    document.getElementById('removeBookForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      alert('Book has been removed successfully!'); // Show success message
+    });
+
+    // Return Book Form Submission
+    document.getElementById('returnBookForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      alert('Book has been returned to the library!'); // Show success message
+    });
+
+    // New Arrivals Form Submission
+    document.getElementById('newArrivalsForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      // Get input values
+      const bookName = document.getElementById('newBookTitle').value;
+      const author = document.getElementById('newAuthor').value;
+      const bookshelfNumber = document.getElementById('bookshelfNumber').value;
+
+      // Add new arrival to the table
+      const tableBody = document.querySelector('#arrivalsTable tbody');
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `<td>${bookName}</td><td>${author}</td><td>${bookshelfNumber}</td>`;
+      tableBody.appendChild(newRow);
+
+      // Clear the input fields
+      document.getElementById('newArrivalsForm').reset();
+      alert('New arrival added successfully!'); // Show success message
+    });
+
+    // Issue Book Form Submission
+    document.getElementById('issueBookForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      alert('Book has been issued successfully!'); // Show success message
+      
+      
+      document.getElementById('addBookForm').addEventListener('submit', function(event) {
+    	  event.preventDefault();
+    	  const title = document.querySelector('#addBookForm input[placeholder="Book Title"]').value;
+    	  const isbn = document.querySelector('#addBookForm input[placeholder="ISBN"]').value;
+    	  const author = document.querySelector('#addBookForm input[placeholder="Author"]').value;
+    	  if (title && isbn && author) {
+    	    alert('Book added successfully!');
+    	  } else {
+    	    alert('Please fill out all fields.');
+    	  }
+    	});
+
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Jost', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, rgba(15, 12, 41, 0.6), rgba(48, 43, 99, 0.6), rgba(36, 36, 62, 0.6)),
+        url('https://www.pixel-studios.com/blog/wp-content/uploads/2018/12/012.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .container {
+      margin: 50px;
+    }
+
+    .btn {
+      background-color: #573b8a;
+      color: white;
+      padding: 10px 20px;
+      margin: 10px;
+      text-align: center;
+      display: inline-block;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #6d44b8;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    .books-list {
+      display: none;
+      list-style-type: none;
+      padding-left: 0;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .books-list li {
+      margin: 10px 0;
+      font-size: 1.2em;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Dashboard</h1>
+    <p>Welcome to the Student Dashboard.</p>
+
+    <!-- View Books Button -->
+    <div class="content">
+      <h2>View Books</h2>
+      <button class="btn" onclick="viewBooks()">View Books</button>
+    </div>
+
+    <!-- Download Books Button -->
+    <div class="content">
+      <h2>Download Books</h2>
+      <button class="btn" onclick="downloadBooks()">Download Books</button>
+    </div>
+
+    <!-- Books List for Viewing -->
+    <ul class="books-list" id="viewBooksList">
+      <li>Java Full Stack Development</li>
+      <li>MERN Stack Web Development</li>
+      <li>Python Full Stack Development</li>
+      <li>Operating Systems (Advanced Concepts)</li>
+    </ul>
+
+    <!-- Books List for Downloading -->
+    <ul class="books-list" id="downloadBooksList">
+      <li><a href="downloadBookPage.html?book=Java%20Full%20Stack%20Development">Java Full Stack Development</a></li>
+      <li><a href="downloadBookPage.html?book=MERN%20Stack%20Web%20Development">MERN Stack Web Development</a></li>
+      <li><a href="downloadBookPage.html?book=Python%20Full%20Stack%20Development">Python Full Stack Development</a></li>
+      <li><a href="downloadBookPage.html?book=Operating%20Systems%20(Advanced%20Concepts)">Operating Systems (Advanced Concepts)</a></li>
+    </ul>
+  </div>
+
+  <script>
+    // Function to view books
+    function viewBooks() {
+      // Toggle the visibility of the books list for viewing
+      const booksList = document.getElementById('viewBooksList');
+      if (booksList.style.display === 'none' || booksList.style.display === '') {
+        booksList.style.display = 'block';
+      } else {
+        booksList.style.display = 'none';
+      }
+
+      // Hide download books list if it's visible
+      const downloadList = document.getElementById('downloadBooksList');
+      downloadList.style.display = 'none';
+    }
+
+    // Function to download books
+    function downloadBooks() {
+      // Toggle the visibility of the books list for downloading
+      const booksList = document.getElementById('downloadBooksList');
+      if (booksList.style.display === 'none' || booksList.style.display === '') {
+        booksList.style.display = 'block';
+      } else {
+        booksList.style.display = 'none';
+      }
+
+      // Hide view books list if it's visible
+      const viewList = document.getElementById('viewBooksList');
+      viewList.style.display = 'none';
+    }
+  </script>
+</body>
+</html>

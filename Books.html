@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Books - Library Management System">
+    <meta name="keywords" content="books, library, educational resources">
+    <title>Books - Library Management System</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('https://www.pixel-studios.com/blog/wp-content/uploads/2018/12/012.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        header {
+            background-color: #007acc;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        header h1 {
+            margin-bottom: 5px;
+            font-size: 1.5rem;
+        }
+
+        header nav ul {
+            list-style: none;
+        }
+
+        header nav ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        body > *:not(header) {
+            margin-top: 80px;
+        }
+
+        #book-list {
+            margin: 20px auto; /* Center horizontally */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px; /* Limit max width */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content */
+            justify-content: center; /* Center content */
+            height: calc(100vh - 160px); /* Full height minus header/footer */
+        }
+
+        #book-list h2 {
+            font-size: 2rem;
+            color: #007acc;
+            margin-bottom: 20px;
+        }
+
+        #book-list ul {
+            list-style: none; /* Remove numbering */
+            padding: 0; /* Remove default padding */
+            font-size: 1.2rem;
+            display: flex;
+            flex-direction: column; /* Align vertically */
+            align-items: center; /* Center align items */
+        }
+
+        #book-list ul li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e7e7e7;
+            border-radius: 5px;
+            width: 100%; /* Make items full width */
+            max-width: 400px; /* Limit max width */
+            text-align: center; /* Center text */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #007acc;
+            color: white;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Library Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="book-list">
+        <h2>Books List</h2>
+        <ul>
+            <li>Java Full Stack Development</li>
+            <li>MERN Stack Web Development</li>
+            <li>Python Full Stack Development</li>
+            <li>Operating Systems (Advanced Concepts)</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Library Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

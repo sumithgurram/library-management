@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Book</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Jost', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, rgba(15, 12, 41, 0.6), rgba(48, 43, 99, 0.6), rgba(36, 36, 62, 0.6)),
+        url('https://www.pixel-studios.com/blog/wp-content/uploads/2018/12/012.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .message {
+      font-size: 2em;
+      color: #fff;
+      margin-top: 30px;
+    }
+
+    .btn {
+      background-color: #573b8a;
+      color: white;
+      padding: 15px 30px;
+      margin-top: 20px;
+      text-align: center;
+      display: inline-block;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #6d44b8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Download Book</h1>
+  <div class="message" id="bookMessage">
+    <!-- This will display the message with the book name -->
+  </div>
+
+  <!-- Download Book Button -->
+  <button class="btn" id="downloadButton" onclick="downloadBook()">Download Book</button>
+
+  <script>
+    // Function to get the URL parameters and display the book name
+    function getBookFromUrl() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const book = urlParams.get('book');
+      document.getElementById('bookMessage').innerHTML = `Download the book: <strong>${book}</strong>`;
+    }
+
+    // Call the function to display the download message
+    getBookFromUrl();
+
+    // Function to simulate downloading the book (you can replace this with a real file URL)
+    function downloadBook() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const book = urlParams.get('book');
+      
+      // For now, you can replace the URL with the actual file path to download the book
+      alert(`Initiating download for ${book}`);
+      
+      // Example of download link (replace with actual URL)
+      const downloadUrl = `/path/to/download/${encodeURIComponent(book)}.pdf`;
+      
+      // Create a temporary link to trigger the download
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = `${book}.pdf`;  // File name for the download
+      link.click();  // Trigger the download
+    }
+  </script>
+</body>
+</html>
